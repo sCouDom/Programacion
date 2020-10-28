@@ -13,3 +13,6 @@
 
 [Boletin 5](https://github.com/sCouDom/Programacion/tree/master/Boletin5/src/boletin5)
 
+[Boletin 6](https://github.com/sCouDom/Programacion/tree/master/Boletin6/src/boletin6)
+
+[Boletin Extra 1](https://github.com/sCouDom/Programacion/tree/master/BoletinExtra1/src/boletinextra1)
