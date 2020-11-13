@@ -15,4 +15,10 @@
 
 [Boletin 6](https://github.com/sCouDom/Programacion/tree/master/Boletin6/src/boletin6)
 
+[Boletin 7](https://github.com/sCouDom/Programacion/tree/master/Boletin7/src/boletin7)
+
+[Boletin 8](https://github.com/sCouDom/Programacion/tree/master/Boletin8/src/boletin8)
+
 [Boletin Extra 1](https://github.com/sCouDom/Programacion/tree/master/BoletinExtra1/src/boletinextra1)
+
+[Boletin Extra 2](https://github.com/sCouDom/Programacion/tree/master/BoletinExtra2/src/boletinExtra2)
