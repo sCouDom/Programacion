@@ -8,7 +8,7 @@ public class Ej4 {
         System.out.println("Introduce número");
         int num = sc.nextInt();
         while(num!=0){
-            for(int i=1;i==10;i++){
+            for(int i=1;i<11;i++){
                 System.out.println(num+"*"+i+"="+(num*i));
             }
             System.out.println("Introduce número");
