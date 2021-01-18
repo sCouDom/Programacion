@@ -13,14 +13,21 @@ public class Juego {
         return k;
     }
     public static void adivinar(int nInt, int numA){
+        boolean flag=false;
         for(int i=0; i<nInt;i++){
-            if(Integer.parseInt(JOptionPane.showInputDialog("Adivinar número"))==numA){
+            int k=Integer.parseInt(JOptionPane.showInputDialog("Adivinar número"));
+            if(k==numA){
                 JOptionPane.showMessageDialog(null,"Número adivinado!");
+                flag=true;
                 break;
+            } else if(k>numA) {
+                JOptionPane.showMessageDialog(null, "Te pasaste");
             } else {
-                JOptionPane.showMessageDialog(null, "Intentar de nuevo");
+                JOptionPane.showMessageDialog(null, "Te quedaste corto");
             }
-            JOptionPane.showMessageDialog(null,"No acertaste el número, mala suerte");
+        }
+        if(!flag){
+            JOptionPane.showMessageDialog(null,"Jugaste como nunca y perdiste como siempre, mala suerte");
         }
     }
 }
