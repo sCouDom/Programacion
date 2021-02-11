@@ -1,42 +1,63 @@
 public class Garaxe {
     private static int numCoches;
-    private static float prezoPrimeirasHoras=1.5f,prezoNormal=0.2f;
-    private static Coche coche;
     private static final int PLAZAS = 5;
+    private static final float PREZO_PRIMEIRAS_HORAS=1.5f, PREZO_NORMAL=0.2f;
+    private static Coche[] coches = new Coche[PLAZAS];
 
-    public static void entradaCoche(){
-        if(numCoches==5){
-            System.out.println("COMPLETO");
-        } else {
-            System.out.println("PLAZAS DISPOÑIBLES "+(PLAZAS-numCoches));
+    private static boolean aparcar(Coche coche){
+        for (int i = 0; i < PLAZAS; i++) {
+            if(coches[i]==null){
+                coches[i]=coche;
+                return true;
+            }
         }
-        numCoches++;
+        return false;
+    }
+
+    private static int contarPlazas(){
+        int cont=5;
+        for (int i = 0; i < PLAZAS; i++) {
+            if(coches[i]!=null){
+                cont--;
+            }
+        }
+        return cont;
+    }
+    public static void entradaCoche(Coche coche){
+        if(aparcar(coche)){
+            System.out.println("PLAZAS DISPOÑIBLES: "+contarPlazas());
+            numCoches++;
+        } else {
+            System.out.println("COMPLETO");
+        }
     }
 
     public static void salidaCoche(float tempo, float cartosRecibidos, Coche coche){
-        numCoches--;
+        boolean flag=false;
         float prezo;
-        if (tempo<=3){
-            prezo=tempo*prezoPrimeirasHoras;
-        }else{
-            prezo=3*prezoPrimeirasHoras+(tempo-3)*prezoNormal;
+        if(numCoches==0){
+            System.out.println("Parking vacío");
+        } else {
+            for (int i = 0; i < PLAZAS; i++) {
+                if(coches[i]!=null){
+                    if(coches[i].matricula.compareTo(coche.matricula)==0){
+                        coches[i]=null;
+                        flag=true;
+                    }
+                }
+            }
         }
-        System.out.println("FACTURA\nMATRÍCULA COCHE:"+coche.matricula+"\nTEMPO:"+tempo+"\nPRECIO:"+prezo+"\nCARTOS RECIBIDOS:" +
-                cartosRecibidos+"\nCARTOS DEVOLTOS:"+(cartosRecibidos-prezo)+"\nGRAZAS POR USAR O NOSO APARCADOIRO");
-    }
+        if(flag){
+            if(tempo<=3){
+                prezo=PREZO_PRIMEIRAS_HORAS;
+            } else {
+                prezo=1.5f+(tempo-3)*PREZO_NORMAL;
+            }
+            System.out.println("FACTURA\nMATRÍCULA COCHE:"+coche.matricula+"\nTEMPO:"+tempo+"\nPRECIO:"+prezo+"\nCARTOS RECIBIDOS:" +
+                    cartosRecibidos+"\nCARTOS DEVOLTOS:"+(cartosRecibidos-prezo)+"\nGRAZAS POR USAR O NOSO APARCADOIRO");
 
-    public static void main(String[] args) {
-        Coche coche1 = new Coche("1234A");
-        entradaCoche();
-        salidaCoche(4, 50, coche1);
-        entradaCoche();
-        salidaCoche(2, 50, coche1);
-        entradaCoche();
-        entradaCoche();
-        entradaCoche();
-        entradaCoche();
-        entradaCoche();
-        entradaCoche();
-        salidaCoche(2, 50, coche1);
+        } else {
+            System.out.println("ERROR: El coche no estaba en el garaje");
+        }
     }
 }
