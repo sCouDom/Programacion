@@ -15,6 +15,7 @@ public class Interfaz {
     static JButton premer = new JButton();
     static JButton limpar = new JButton();
     static JTextArea ta = new JTextArea();
+    private JPanel panelRaiz;
 
     private static void inicializarFrame(){
         frame.setSize(800,600);
